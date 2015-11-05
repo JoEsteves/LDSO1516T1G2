@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+	<title>CityFix - profile</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/home.css" rel="stylesheet">
+	
+	<!-- other CSS -->
+	
+	
+  </head>
+  <body>
+  
+	  <div class="container-fluid text-center">
+		
+		<div class="title-container container">
+			<div class="title col-md-12">
+				<h1>CityFix</h1>
+			</div>
+			
+			<div id="top-buttons"  class="col-md-4 col-md-offset-4" >
+				
+					<button id="login-btn" type="button" class="btn btn-default">Login</button>
+				
+				
+				
+					<button id="register-btn" type="button" class="btn btn-default">Registar</button>
+				
+			</div>
+			
+			<div id="error_register" class="col-md-4 col-md-offset-4 text-center">
+			
+			</div>
+			
+			<div id="login-form" class="col-md-4 col-md-offset-4  login-form-panel panel panel-default opacity-form">
+				
+				<div id="error_login" class="home-alert text-center">
+				</div>
+				
+				<div class="panel-body">
+					<form role="form">
+						
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="logemail" type="email" class="form-control" placeholder="Email" required/>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="logpass" type="password" class="form-control" placeholder="Password" required/>
+						</div>
+						<div class="checkbox">
+						  <label>
+							<input id="rememberme" type="checkbox" value="remember-me">Lembrar-me</label>
+						</div>
+						<div class="text-center">
+							<a id="logbtn"  class="btn btn-success ">Entrar</a> <a class="btn btn-danger btn-cancel">Cancelar</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+			
+			<div id="register-form" class="col-md-4 col-md-offset-4  login-form-panel panel panel-default opacity-form">
+				
+				<div id="error_login" class="home-alert text-center">
+				</div>
+				
+				<div class="panel-body">
+					<form role="form">
+						
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="regpnome" type="text" class="form-control" placeholder="Primeiro Nome" required/>
+						</div>
+						
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="regsnome" type="text" class="form-control" placeholder="Último Nome" required/>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="regpass" type="password" class="form-control" placeholder="Password" required/>
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input id="rerespass" type="password" class="form-control" placeholder="Repetir Password" required/>
+						</div>
+						<div class="text-center">
+							<a id="regbtn"  class="btn btn-success ">Registar</a> <a class="btn btn-danger btn-cancel">Cancelar</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		
+		</div>
+		
+		
+	  </div>
+	  
+	  <div class="container">
+		
+		<div class="row about">
+			<div class="row">
+				<div class="col-md-7 pull-right">
+					<h2 class="section-heading">Visao do projeto</h2>
+					<p class="lead">Texto sobre visao do projeto asd sa dsa dsa dsadnkj sand sand lksaj kdsakj dsa
+					dsnakdjsa lkjdsalkj dlskaj dklsajd ksajd lksaj
+					dsajkdjsalkdjs akldsj as0dojs0daaaaaaaaaaaaaaaad 
+					</p>
+				</div>
+				<div class="col-md-5 ">
+					<img class="img-responsive" src="img/img1.jpg" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row about">
+			<div class="row">
+				<div class="col-md-7">
+					<h2 class="section-heading"></h2>
+					<p class="lead">Cada projeto terá associado um fórum onde a equipa pode debater ideias.</p>
+				</div>
+				<div class="col-md-5 ">
+					<img class="img-responsive" src="img/img2.png" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row about">
+			<div class="row">
+				<div class="col-md-7 pull-right">
+					<h2 class="section-heading">Tickets mais recentes</h2>
+					<p class="lead">Texto sobre tickets mais recentes</p>
+				</div>
+				<div class="col-md-5 ">
+					<img class="img-responsive" src="img/img3.png" alt="">
+				</div>
+			</div>
+		</div>
+		
+	  </div>
+	  <!--
+	  <footer class="text-center pull-bottom">
+		CityFix 2015
+	  </footer>
+	--!>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script>
+		
+	$(".btn-cancel").click(function(){
+		$("#register-form").hide();
+		$("#login-form").hide();
+		$("#top-buttons").show();
+	});
+	
+	$("#login-btn").click(function(){
+		$("#register-form").hide();
+		$("#login-form").show();
+		$("#top-buttons").hide();
+	});
+	
+	$("#register-btn").click(function(){
+		$("#register-form").show();
+		$("#login-form").hide();
+		$("#top-buttons").hide();
+	});
+	
+	$("#logbtn").click(function(){
+		console.log("login");
+	});
+	
+	$("#regbtn").click(function(){
+		console.log("register");
+	});
+	
+	
+	</script>
+	
+  </body>
+</html>
