@@ -1,1 +1,0 @@
-json.extract! @ticket, :id, :title, :location, :long, :lat, :description, :picture, :date, :user_id :created_at, :updated_at
