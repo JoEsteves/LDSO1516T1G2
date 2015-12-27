@@ -1,0 +1,117 @@
+    <%= stylesheet_link_tag "tickets" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js" %>
+
+    <%= render 'layouts/navbar' %>
+
+    <div class="container global-container" ng-controller="TicketListCtrl">
+
+      <div class="btn-group col-md-12 selection-buttons" role="group" aria-label="...">
+        <button type="button" class="btn btn-default col-md-3">Criados por mim</button>
+        <button type="button" class="btn btn-default col-md-3">Validados por mim</button>
+        <button type="button" class="btn btn-default col-md-3">Populares</button>
+        <button type="button" class="btn btn-default col-md-3">Recentes</button>
+      </div>
+
+
+      <div class="col-md-12 ticket-row">
+
+
+        <div class="col-md-6 ticket" ng-repeat="ticket in tickets">
+
+          <div class="col-md-12 ticket-container">
+
+            <div class="col-md-12 ticket-title-container t-margin">
+              <div class="col-md-8 ticket-title"> 
+                <div class="ticket-title2 t-dark-blue">{{ticket.title}}</div>
+                <div class="t-soft-blue ticket-location">{{ ticket.location }}</div> 
+              </div>
+              <div class="col-md-4 text-right ">
+                <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+              </div>
+            </div>
+
+
+            <div  class="col-md-12 ticket-image">
+              <img ng-src="/assets/tickets/{{ticket.picture}}" class="img-responsive">
+            </div>
+
+
+            <div class="col-md-12 ticket-info t-margin t-nomargin">
+              <div class="col-md-6 ticket-owner-image">
+                <div class="col-md-1 t-nomargin">
+
+                  <img ng-src="users/{{ticket.user.picture}}">
+                  
+                  <img ng-src="/assets/tickets/{{ticket.user.picture}}" class="img-circle img-responsive">
+                  <!--<img src="img/default.png" alt="" class="img-circle img-responsive">-->
+                </div>
+                <div class="col-md-8 ticket-owner-name text-left t-dark-blue t-nomargin"> {{ticket.fname}} {{ticket.lname}}</div>
+              </div>
+              <div class="col-md-6 ticket-date text-right t-dark-blue"> {{ticket.date}}</div>
+            </div>
+            
+
+            <div class="col-md-12 ticket-description">
+              <p>{{ticket.description}}</p>
+            </div>
+            
+
+            <div class="col-md-12 ticket-validations t-dark t-margin">
+              128 validações
+            </div>
+
+            <div class="col-md-12 ticket-options t-margin">
+              
+              <div class="col-md-1 pull-left"> 
+                <div class="icon-like-love-streamline"></div>
+              </div>
+
+              <div class="col-md-1 pull-right">
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+
+              </div>
+              
+            </div>
+
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+      <script>
+
+      var ticketApp = angular.module('ticketApp', []);
+
+    angular.element(document).ready(function() {
+      angular.bootstrap(document, ['ticketApp']);
+    });
+
+
+
+    ticketApp.controller('TicketListCtrl', function ($scope,$http) {
+
+      $scope.tickets = [];
+
+       
+        $.ajax({
+        type: "GET",
+        url: "/tickets/list_all",
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            $scope.tickets = data;
+            console.log($scope.tickets);
+            $scope.$digest();// Will alert Max
+        },
+        error: function(data){
+          console.log("weeeee");
+        }
+
+     });
+
+      });
+
+    </script>

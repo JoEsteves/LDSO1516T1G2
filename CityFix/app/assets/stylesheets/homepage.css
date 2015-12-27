@@ -1,0 +1,44 @@
+/*004d74*/
+/*
+azul escuro #125688
+azul claro #4090db
+cinzento escuro #a5a7aa
+cinzento claro #e7e7e7
+#e6e6e6
+quase branco #fafafa
+preto #fff
+quase preto: #4b4f54
+#e6e6e6*/
+
+
+.container-top{
+	margin-top: 10%;
+	color:#125688;
+}
+
+.login-form{
+	
+}
+
+.container-logo{
+	
+}
+
+
+
+.hideit{
+	display:none;
+}
+
+.btn.btn-default.btn-sbmt{
+	color:#fafafa;
+	background-color:#125688;
+}
+
+.btn.btn-default.btn-gtop{
+	background-color:#e7e7e7;
+}
+
+.login-btns, .register-btns{
+	margin-top: 3%;
+}

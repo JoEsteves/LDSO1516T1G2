@@ -1,0 +1,27 @@
+.navbar.navbar-default{
+	background-color:#fff;
+	margin-bottom: 0px;
+}
+
+a#logo.navbar-brand{
+	color:#125688;
+	font-size:20px;
+	font-weight:600;
+	padding-right:0px;
+}
+
+ul.nav.navbar-nav.navbar-right li a#username{
+	color:#125688;
+	font-size:15px;
+	font-weight:600;
+}
+
+ul.nav.navbar-nav.navbar-right li a#username{
+	color:#125688;
+	font-size:15px;
+	font-weight:600;
+}
+
+.glyphicon.glyphicon-tasks{
+	color:#125688;
+}

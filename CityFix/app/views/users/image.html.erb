@@ -1,0 +1,80 @@
+<%= stylesheet_link_tag "info" %>
+<%= render 'layouts/navbar' %>
+
+<div class="container global-container">
+	<div class="col-md-12 global2">
+		<div class="col-md-3 left-menu">
+
+			<ul class="list-group">
+			  <li class="list-group-item"><a href="/users/info">Editar dados pessoais</a></li>
+			  <li class="list-group-item"><a href="/users/password">Alterar password</a></li>
+			  <li class="list-group-item selected">Alterar fotografia</li>
+			</ul>
+
+
+		</div>
+
+		<div class="col-md-7 display-container">
+			<div class="col-md 12 r-header t-great-dark-blue">
+
+
+				<div class="col-md 12 r-title">
+					Alterar Fotografia
+				</div>
+
+				<div class="col-md 12 r-message">
+					
+				</div>
+			</div>
+			
+			<div class="col-md-12 r-form">
+				
+				<div class="col-md-3">
+					<div class="row img-container">
+
+						<%=image_tag("#{current_user.picture}", class: "img-responsive img-rounded") %>
+					</div>
+					
+					<div class="row text-center cncl-container">
+						<% if current_user.picture.file.nil? %>
+							<p class="help-block">Sem fotografia</p>
+						<% else %>
+
+							<%= form_for :user, method: :put, url: 'delete_image' do |g| %>
+
+							<%= g.submit 'Apagar Imagem' %>
+
+							<% end %>
+							<!--<input class="btn btn-default btn-cncl" type="submit" value="Eliminar Atual">-->
+						<% end %>
+					</div>
+
+				</div>
+
+				<div class="col-md-9 photo-form">
+					<%= notice %>
+
+					<%= form_for :user, method: :put, :html => {:multipart => true}, url: 'update_image' do |f| %>
+						<p>
+							<%= f.file_field :picture %>
+						</p>
+
+						<button type="submit" name"commit" class="btn btn-default btn-sbmt">  
+						    Carregar Imagem
+						</button>
+
+					<% end %>
+
+					<!--<div class="row text-center">
+						<label for="exampleInputFile">Alterar fotografia</label>
+					    <input type="file" id="exampleInputFile">
+					</div>-->
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
+
+
+</div>

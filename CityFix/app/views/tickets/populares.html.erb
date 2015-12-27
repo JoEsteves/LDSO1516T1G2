@@ -1,0 +1,85 @@
+<%= stylesheet_link_tag "tickets" %>
+<%= render 'layouts/navbar' %>
+
+<div class="container global-container">
+
+
+   <div class="btn-group col-md-12 selection-buttons" role="group" aria-label="...">
+    <a type="button" class="btn btn-default col-md-3" href="/tickets/submetidos" >Criados por mim</a>
+    <a type="button" class="btn btn-default col-md-3 " href="/tickets/validados" >Validados por mim</a>
+    <a type="button" class="btn btn-default col-md-3 selected">Populares</a>
+    <a type="button" class="btn btn-default col-md-3"  href="/tickets/recentes">Recentes</a>
+  </div>
+
+
+  <div class="col-md-12 ticket-row">
+
+
+    <% @tickets.each do |ticket| %>
+
+    <div class="col-md-6 ticket">
+
+      <div class="col-md-12 ticket-container">
+
+        <div class="col-md-12 ticket-title-container t-margin">
+          <div class="col-md-8 ticket-title"> 
+            <div class="ticket-title2 t-dark-blue"><%= ticket.title %></div>
+            <div class="t-soft-blue ticket-location"><%= ticket.location %></div> 
+          </div>
+          <div class="col-md-4 text-right ">
+            <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div  class="col-md-12 ticket-image">
+
+          <%= link_to image_tag("tickets/#{ticket.picture}", class:"img-responsive"), "/tickets/#{ticket.id}" %>
+          <!--<a href="tickets/#{ticket.id}"><%= image_tag("tickets/#{ticket.picture}", class: "img-responsive") %></a>-->
+        </div>
+
+
+        <div class="col-md-12 ticket-info t-margin t-nomargin">
+          <div class="col-md-6 ticket-owner-image">
+            <div class="col-md-1 t-nomargin">
+
+
+              <%= image_tag("#{ticket.user.picture}", class: "img-circle img-responsive") %>
+              <!--<img src="img/default.png" alt="" class="img-circle img-responsive">-->
+            </div>
+            <div class="col-md-8 ticket-owner-name text-left t-dark-blue t-nomargin"><%= ticket.user.fname %> <%= ticket.user.lname %></div>
+          </div>
+          <div class="col-md-6 ticket-date text-right t-dark-blue"> <%= ticket.date%></div>
+        </div>
+        
+
+        <div class="col-md-12 ticket-description">
+          <p><%=ticket.description%></p>
+        </div>
+        
+
+        <div class="col-md-12 ticket-validations t-dark t-margin">
+          128 validações
+        </div>
+
+        <div class="col-md-12 ticket-options t-margin">
+          
+          <div class="col-md-1 pull-left"> 
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-1 pull-right">
+            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+
+          </div>
+          
+        </div>
+
+
+      </div>
+
+      </div>
+    
+    <% end %>
+
+    </div>
+  </div>

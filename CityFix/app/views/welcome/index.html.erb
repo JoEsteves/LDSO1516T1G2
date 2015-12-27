@@ -1,0 +1,234 @@
+<%= stylesheet_link_tag "homepage" %>
+
+<div class="container">
+
+	<div class="container-top text-center">
+		<div class="col-md-6 container-logo">
+			<div>
+				<h1>City Fix</h1>
+			</div>
+
+			<div >
+				<h4>A nossa cidade</h4>
+			</div>
+		</div>
+
+		<% if user_signed_in? %>
+		<div class="col-md-6 login-form hideit">
+		<% else %>
+		<div class="col-md-6 login-form">
+		<% end %>
+			<%= form_for :user, url: 'users/sign_in', html: {class: "form-horizontal "} do |f| %>
+				<div class="form-group">
+				    <%= f.label :email , 'Email', class: 'col-md-3 control-label pull-left' %>
+					<div class="col-md-9">
+				    	<%= f.email_field :email, autofocus: true , class: 'form-control' %>
+				    </div>
+				 </div>
+
+				<div class="form-group">
+					    <%= f.label :password , 'Password' , class: 'col-md-3 control-label pull-left'%>
+					    <div class="col-md-9">
+					    <%= f.password_field :password, autocomplete: "off" , class: 'form-control' %>
+			    	</div>
+				</div>
+
+
+
+				  <% if Devise.mappings[:user].rememberable? -%>
+				    <div class="field">
+				      <%= f.check_box :remember_me %>
+				      <%= f.label :remember_me, 'Lembrar-me' %>
+				    </div>
+				  <% end -%>
+
+				  <div class="actions">
+					  <button type="submit" name="commit" class="btn btn-default btn-sbmt">  
+					    Autenticar
+					</button>
+				  </div>
+			<% end %>
+
+		<div class="login-btns btn-panel">
+		  <button type="button" id="login-reg"class="btn btn-default btn-gtop">Registar</button>
+		  <button type="button" id="login-rec"class="btn btn-default btn-gtop">Recuperar Password</button>
+		</div>	
+
+		</div>
+
+		<div class="col-md-6 register-form hideit">
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal "}) do |f| %>
+			  <%= devise_error_messages! %>
+				
+				<div class="form-group">
+				    <%= f.label :fname,'Primeiro nome', class: 'col-md-3 control-label pull-left' %>
+				    <div class="col-md-9">
+				    	<%= f.text_field :fname, autofocus: true , class: 'form-control'%>
+				  	</div>
+				</div>
+
+				<div class="form-group">
+				    <%= f.label :lname,'Último nome', class: 'col-md-3 control-label pull-left' %>
+				    <div class="col-md-9">
+				    	<%= f.text_field :lname, autofocus: true , class: 'form-control' %>
+				  	</div>
+				</div>
+
+			  <div class="form-group">
+			    <%= f.label :email, 'Email', class: 'col-md-3 control-label pull-left' %>
+			    <div class="col-md-9">
+			    	<%= f.email_field :email, autofocus: true , class: 'form-control'%>
+		  		</div>
+		  	</div>
+
+			  <div class="form-group">
+			    <%= f.label :password , 'Password', class: 'col-md-3 control-label pull-left' %>
+			    <% if @minimum_password_length %>
+			    <em>(<%= @minimum_password_length %> characters minimum)</em>
+			    <% end %>
+			    <div class="col-md-9">
+			    	<%= f.password_field :password, autocomplete: "off" , class: 'form-control' %>
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <%= f.label :password_confirmation, 'Confirmar password', class: 'col-md-3 control-label pull-left' %>
+			    <div class="col-md-9">
+			    	<%= f.password_field :password_confirmation, autocomplete: "off" , class: 'form-control'%>
+			    </div>
+		  	</div>
+
+			  <div class="actions">
+			    <button type="submit" name"commit" class="btn btn-default btn-sbmt">  
+					    Registar
+				</button>
+			  </div>
+			<% end %>
+
+
+			<div class="register-btns btn-panel">
+			  <button type="button" id="reg-login"class="btn btn-default btn-gtop">Autenticar-me</button>
+			</div>	
+
+
+		</div>
+		
+		<% if user_signed_in? %>
+		  <div class="col-md-6 logout-form">
+		<% else %>
+		  <div class="col-md-6 logout-form hideit">
+		  	<% end %>
+			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+		</div>
+
+
+		<div class="col-md-6 recover-form hideit">
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+			  <%= devise_error_messages! %>
+
+			  <div class="field">
+			    <%= f.label :email %><br />
+			    <%= f.email_field :email, autofocus: true %>
+			  </div>
+
+			  <div class="actions">
+
+			  	<button type="submit" name"commit" class="btn btn-default btn-sm">  
+				    Enviar-me instruções para recuperar password
+				</button>
+			    
+			  </div>
+			<% end %>
+
+			<div class="recover-btns btn-panel">
+			  <button type="button" id="rec-login"class="btn btn-default btn-sm">Autenticar-me</button>
+			</div>
+
+
+		</div>
+		
+
+
+	</div>
+
+
+	</div>
+
+</div>
+
+
+<script>
+	
+	$("#login-reg").click(function(){
+		$(".login-form").addClass("hideit");
+		$(".register-form").removeClass("hideit");
+	});
+
+
+	$("#reg-login").click(function(){
+		$(".register-form").addClass("hideit");
+		$(".login-form").removeClass("hideit");
+	});
+
+	$("#login-rec").click(function(){
+		$(".login-form").addClass("hideit");
+		$(".recover-form").removeClass("hideit");
+	});
+
+	$("#rec-login").click(function(){
+		$(".recover-form").addClass("hideit");
+		$(".login-form").removeClass("hideit");
+	});
+
+
+/*	
+	$( "#sign_up").click(function() { 
+
+			var email = $("#inputEmail3").val();
+			var password = $("#inputPassword3").val();
+
+			$.ajax({
+				url: '/users',
+				type: "POST",
+				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+				data: { user: { email: email, password: password, password_confirmation: password  }},
+				success: function(response){
+					console.log(response);
+				}
+			});
+		});
+
+	$( "#login").click(function() { 
+
+		var email = $("#inputEmail").val();
+		var password = $("#inputPassword").val();
+		var remember = $("#remember").val();
+
+		$.ajax({
+			url: '/users/sign_in',
+			type: "POST",
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			data: { user: { email: email, password: password, remember_me: 1}},
+			success: function(response){
+				console.log(response);
+			}
+		});
+	});
+
+*/
+/*
+	$( "#logout").click(function() { 
+
+
+		$.ajax({
+			url: '/users/sign_out',
+			method: "DELETE",
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			success: function(response){
+				console.log("logged out");
+			}
+		});
+	});
+*/
+
+</script>

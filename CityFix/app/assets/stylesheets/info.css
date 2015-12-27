@@ -1,0 +1,112 @@
+html{
+	height: 90%;
+	background-color: ##fafafa;
+}
+
+body{
+	height: 100%;
+}
+
+.global-container{
+	height: 100%;
+}
+
+.global-container .global2{
+	height:100%;
+}
+.left-menu{
+	height:100%;
+	
+	border:solid #e7e7e7 1px;
+	border-top:none;
+	padding:0px;
+}
+
+.left-menu ul li{
+	border-left: none;
+	border-right: none;
+	
+	 -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+     cursor:pointer;
+
+
+    color:#125688;
+	font-size:15px;
+	font-weight:600;
+}
+
+.left-menu ul li.list-group-item a{
+	color:#125688;
+	font-size:15px;
+	font-weight:600;
+	text-decoration: none;	
+}
+
+.left-menu ul li.selected{
+	background-color:#125688;
+	font-size:15px;
+	font-weight:600;
+	color:#fafafa;
+}
+
+
+.left-menu .list-group{
+	margin-top:15%;
+}
+
+.display-container{
+	margin-left:3%;
+	height:100%;
+
+}
+
+.r-header, .r-form{
+	margin-top:5%;
+	padding-bottom:3%;
+	border-bottom:solid #e7e7e7 1px;
+	padding-left:0px;
+}
+
+.r-title,.r-message{
+	padding-left: 0px;
+}
+
+
+.form-horizontal .control-label{
+	font-size:15px;
+	text-align:left;
+	color:#4b4f54;
+}
+
+.r-button{
+	margin-top:5%;
+	padding-left:0px;
+}
+
+
+.t-great-dark-blue{
+	color:#125688;
+	font-size:35px;
+	font-weight:600;
+}
+
+
+.btn.btn-default.btn-sbmt{
+	color:#fafafa;
+	background-color:#125688;
+}
+
+.btn.btn-default.btn-cncl{
+	color:#fafafa;
+	background-color:#911933;
+}
+
+.img-container{
+	padding-bottom:20%;
+}
+
+.photo-form{
+	padding-left: 10%;
+}

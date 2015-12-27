@@ -1,0 +1,95 @@
+<%= stylesheet_link_tag "info" %>
+<%= render 'layouts/navbar' %>
+
+<div class="container global-container">
+	<div class="col-md-12 global2">
+		<div class="col-md-3 left-menu">
+
+			<ul class="list-group">
+			  <li class="list-group-item selected">Editar dados pessoais</li>
+			  <li class="list-group-item"><a href="/users/password">Alterar password</a></li>
+			  <li class="list-group-item"><a href="/users/image">Alterar fotografia</a></li>
+			</ul>
+
+
+		</div>
+
+		<div class="col-md-7 display-container">
+			<div class="col-md-12 r-header t-great-dark-blue">
+
+
+				<div class="col-md-12 r-title">
+					Editar dados pessoais
+				</div>
+
+				<div class="col-md-12 r-message">
+					<span></span>
+				</div>
+			</div>
+			
+			<%= notice %>
+			<%= alert %>
+
+			<div class="col-md-12 r-form">
+				
+				<%= form_for :user, method: :put, html: {class: "form-horizontal"}, url: 'update_info' do |f| %>
+					<div class="form-group ">
+						<%= f.label :fname, 'Primeiro nome', class: 'col-sm-3 control-label pull-left' %>
+						<div class="col-sm-9">
+							<%= f.text_field :fname, autofocus: true, class: 'form-control', :value => current_user.fname %>
+						</div>
+					</div>
+
+					<div class="form-group ">
+						<%= f.label :lname, 'Último nome', class: 'col-sm-3 control-label pull-left'%>
+						<div class="col-sm-9">
+							<%= f.text_field :lname, autofocus: true, class: 'form-control', :value => current_user.lname %>
+						</div>
+					</div>
+
+
+					<div class="form-group ">
+						<%= f.label :email, 'Email', class: 'col-sm-3 control-label pull-left' %>
+						<div class="col-sm-9">
+							<%= f.email_field :email, autofocus: true, class: 'form-control', :value => current_user.email %>
+						</div>
+					</div>
+
+				</div>					
+				<div class="actions col-md-12 r-button pull-right">
+				    <button type="submit" name"commit" class="btn btn-default btn-sbmt">  
+						    enviar
+					</button>
+				</div>
+
+
+
+				<% end %>
+				<!--<form class="form-horizontal">
+				  <div class="form-group ">
+				    <label for="inputfname" class="col-sm-3 control-label pull-left">Primeiro nome</label>
+				    <div class="col-sm-9">
+				      <input type="text" class="form-control" id="inputfname" placeholder="Primeiro nome">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="inputlname" class="col-sm-3 control-label">Último nome</label>
+				    <div class="col-sm-9">
+				      <input type="text" class="form-control" id="inputlname" placeholder="Último nome">
+				    </div>
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="inputemail" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-9">
+				      <input type="email" class="form-control" id="inputemail" placeholder="Email">
+				    </div>
+				  </div>
+				</form>-->
+
+		</div>
+	</div>
+
+
+</div>
