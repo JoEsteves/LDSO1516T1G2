@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221080245) do
+ActiveRecord::Schema.define(version: 20160105020338) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20151221080245) do
     t.datetime "updated_at",                  null: false
     t.boolean  "aproved",     default: false, null: false
     t.integer  "status_id",   default: 1
+    t.integer  "votes_count", default: 0
   end
 
   add_index "tickets", ["status_id"], name: "index_tickets_on_status_id"

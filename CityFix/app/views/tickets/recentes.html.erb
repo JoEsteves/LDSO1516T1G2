@@ -22,9 +22,9 @@
       <div class="col-md-12 ticket-container">
 
         <div class="col-md-12 ticket-title-container t-margin">
-          <div class="col-md-8 ticket-title"> 
+          <div class="col-md-8 ticket-title">
             <div class="ticket-title2 t-dark-blue"><%= ticket.title %></div>
-            <div class="t-soft-blue ticket-location"><%= ticket.location %></div> 
+            <div class="t-soft-blue ticket-location"><%= ticket.location %></div>
           </div>
           <div class="col-md-4 text-right ">
             <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
@@ -50,20 +50,20 @@
           </div>
           <div class="col-md-6 ticket-date text-right t-dark-blue"> <%= ticket.date%></div>
         </div>
-        
+
 
         <div class="col-md-12 ticket-description">
           <p><%=ticket.description%></p>
         </div>
-        
+
 
         <div class="col-md-12 ticket-validations t-dark t-margin">
-          <%= ticket.votes.length %> validações
+          <%= ticket.votes.count %> validações
         </div>
 
         <div class="col-md-12 ticket-options t-margin">
-          
-          <div class="col-md-1 pull-left"> 
+
+          <div class="col-md-1 pull-left">
             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
           </div>
 
@@ -71,14 +71,14 @@
             <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
 
           </div>
-          
+
         </div>
 
 
       </div>
 
       </div>
-    
+
     <% end %>
 
     </div>
