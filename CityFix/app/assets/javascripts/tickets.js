@@ -14,6 +14,9 @@ $(".ticket-image").click(function(){
 
 });
 }););
+
+
+
 /*
 $(".ticket-location").click(function(){
 	$("#img2").show();

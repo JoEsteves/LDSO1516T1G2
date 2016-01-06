@@ -4,18 +4,19 @@
 <div class="container global-container">
 
 
-  <div class="btn-group col-md-12 selection-buttons" role="group" aria-label="...">
-    <a type="button" class="btn btn-default col-md-3 selected" >Criados por mim</a>
-    <a type="button" class="btn btn-default col-md-3 " href="/tickets/validados" >Validados por mim</a>
-    <a type="button" class="btn btn-default col-md-3" href="/tickets/populares">Populares</a>
+   <div class="btn-group col-md-12 selection-buttons" role="group" aria-label="...">
+    <a type="button" class="btn btn-default col-md-3 selected"  >Criados por mim</a>
+    <a type="button" class="btn btn-default col-md-3" href="/tickets/validados">Validados por mim</a>
+    <a type="button" class="btn btn-default col-md-3 "  href="/tickets/populares" >Populares</a>
     <a type="button" class="btn btn-default col-md-3"  href="/tickets/recentes">Recentes</a>
   </div>
 
 
-  <div class="col-md-12 ticket-row">
+  <div class="ticket-row">
 
+  <div class="col-md-12 ticket-space">
 
-    <% @tickets.each do |ticket| %>
+    <% @tickets.each.with_index do |ticket, index| %>
 
     <div class="col-md-6 ticket">
 
@@ -26,8 +27,12 @@
             <div class="ticket-title2 t-dark-blue"><%= ticket.title %></div>
             <div class="t-soft-blue ticket-location"><%= ticket.location %></div>
           </div>
-          <div class="col-md-4 text-right ">
-            <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+          <div class="col-md-1 pull-right ">
+            <% if ticket.status_id ==0 %>
+              <%= image_tag("staus-red.png", class: "img-responsive",style:"") %>
+            <%else %>
+              <%= image_tag("status-blue.png", class: "img-responsive",style:"") %>
+            <%end%>
           </div>
         </div>
 
@@ -57,17 +62,24 @@
         </div>
 
 
-        <div class="col-md-12 ticket-validations t-dark t-margin">
-          <%= ticket.user_voted %> validações
+        <div class="col-md-12 ticket-validations t-dark t-margin" data-valid="<%=ticket.id%>" data-validn="<%=ticket.votes.count%>")>
+          <%= ticket.votes.count %> validações
         </div>
 
-        <div class="col-md-12 ticket-options t-margin">
+        <div class="col-md-12 ticket-options t-margin no-pad">
+        <div class="col-md-2 pull-left">
+          <!--, style: "height:35px; padding-top:4%;padding-left:0px;"-->
+            <% if ticket.user_voted ==0 %>
 
-          <div class="col-md-1 pull-left">
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+              <%= image_tag("notvoted.png", class: "img-responsive vote-btn a", data: {ticketid: ticket.id}) %>
+              <%= image_tag("voted.png", class: "img-responsive vote-btn  b item-hidden" , data: {ticketid: ticket.id}) %>
+            <%else %>
+              <%= image_tag("voted.png", class: "img-responsive vote-btn a", data: {ticketid: ticket.id}) %>
+              <%= image_tag("notvoted.png", class: "img-responsive  vote-btn b item-hidden", data: {ticketid: ticket.id}) %>
+            <%end%>
           </div>
 
-          <div class="col-md-1 pull-right">
+          <div class="col-md-1 add-pad-top pull-right">
             <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
 
           </div>
@@ -78,8 +90,77 @@
       </div>
 
       </div>
+        <%if index>0 && (index-1)%2==0 %>
+      </div>
+      <div class="col-md-12 ticket-space">
+      <%end%>
 
     <% end %>
 
     </div>
+
+    </div>
   </div>
+
+  <script>
+/*jQuery(document).ready(function($) {
+  //Tell Rails that we’re sending a JavaScript request
+  $.ajaxSetup({
+     'beforeSend': function (xhr){
+    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+  }
+
+  });*/
+      $(".vote-btn").click(function(){
+          console.log($(this).data("ticketid"))
+
+            var tid = $(this).data("ticketid");
+
+            var vote = {ticket_id: tid, user_id: 1};
+
+            console.log(vote);
+
+          $.ajax({
+            method: 'post',
+            dataType: 'json',
+            url: '/votes/createe',
+            data: {"vote": {"ticket_id": tid}},
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));},
+            success: function(data){
+            if(data["answer"] == 2){
+
+                //var dec = $("[data-valid='" + tid + "']").data("validn")-1;
+                 //$("[data-valid='" + tid + "']").text(dec + " validações");
+
+
+                  if($(".a[data-ticketid='" + tid + "']").hasClass("item-hidden")){
+                    $(".a[data-ticketid='" + tid + "']").removeClass("item-hidden");
+                    $(".b[data-ticketid='" + tid + "']").addClass("item-hidden");
+                  }
+                  else{
+                    $(".a[data-ticketid='" + tid + "']").addClass("item-hidden");
+                    $(".b[data-ticketid='" + tid + "']").removeClass("item-hidden");
+                  }
+
+            }
+            else if(data["answer"] == 1){
+
+                 if($(".a[data-ticketid='" + tid + "']").hasClass("item-hidden")){
+                    $(".a[data-ticketid='" + tid + "']").removeClass("item-hidden");
+                    $(".b[data-ticketid='" + tid + "']").addClass("item-hidden");
+                  }
+                  else{
+                    $(".a[data-ticketid='" + tid + "']").addClass("item-hidden");
+                    $(".b[data-ticketid='" + tid + "']").removeClass("item-hidden");
+                  }
+            }
+
+        },
+        error: function(data){
+          console.log(data["answer"]);
+        }
+          });
+
+      });
+
+  </script>

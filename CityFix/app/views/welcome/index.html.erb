@@ -1,15 +1,19 @@
 <%= stylesheet_link_tag "homepage" %>
+<%= stylesheet_link_tag "tickets" %>
 
 <div class="container">
 
-	<div class="container-top text-center">
+	<div class="container-top col-md-12 text-center">
 		<div class="col-md-6 container-logo">
+			<div class="col-md-5">
+			<%= image_tag("logo.png", class: "img-responsive") %>
+			</div>
 			<div>
 				<h1>City Fix</h1>
 			</div>
 
 			<div >
-				<h4>A nossa cidade</h4>
+				<h4>Help us helping you!</h4>
 			</div>
 		</div>
 
@@ -43,7 +47,7 @@
 				  <% end -%>
 
 				  <div class="actions">
-					  <button type="submit" name="commit" class="btn btn-default btn-sbmt">  
+					  <button type="submit" name="commit" class="btn btn-default btn-sbmt">
 					    Autenticar
 					</button>
 				  </div>
@@ -52,14 +56,14 @@
 		<div class="login-btns btn-panel">
 		  <button type="button" id="login-reg"class="btn btn-default btn-gtop">Registar</button>
 		  <button type="button" id="login-rec"class="btn btn-default btn-gtop">Recuperar Password</button>
-		</div>	
+		</div>
 
 		</div>
 
 		<div class="col-md-6 register-form hideit">
 			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal "}) do |f| %>
 			  <%= devise_error_messages! %>
-				
+
 				<div class="form-group">
 				    <%= f.label :fname,'Primeiro nome', class: 'col-md-3 control-label pull-left' %>
 				    <div class="col-md-9">
@@ -99,7 +103,7 @@
 		  	</div>
 
 			  <div class="actions">
-			    <button type="submit" name"commit" class="btn btn-default btn-sbmt">  
+			    <button type="submit" name"commit" class="btn btn-default btn-sbmt">
 					    Registar
 				</button>
 			  </div>
@@ -108,17 +112,17 @@
 
 			<div class="register-btns btn-panel">
 			  <button type="button" id="reg-login"class="btn btn-default btn-gtop">Autenticar-me</button>
-			</div>	
+			</div>
 
 
 		</div>
-		
+
 		<% if user_signed_in? %>
 		  <div class="col-md-6 logout-form">
 		<% else %>
 		  <div class="col-md-6 logout-form hideit">
 		  	<% end %>
-			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 		</div>
 
 
@@ -133,10 +137,10 @@
 
 			  <div class="actions">
 
-			  	<button type="submit" name"commit" class="btn btn-default btn-sm">  
+			  	<button type="submit" name"commit" class="btn btn-default btn-sm">
 				    Enviar-me instruções para recuperar password
 				</button>
-			    
+
 			  </div>
 			<% end %>
 
@@ -146,19 +150,129 @@
 
 
 		</div>
-		
-
 
 	</div>
+		<div class="container1 col-md-12 text-center container-m">
+				<div class="col-md-12 ">
 
 
-	</div>
+					<div >
+						<h3>CityFix is a social app that makes people feel and live more their own city.
+						Using this application users will be able to help fixing some of their city problems.
+						 For example, a person walks through the same streets everyday and detects the same
+						  problems without being fixed (broken water pipes, missing traffic signs, etc).
+						  By using the application the user can upload a picture of that problem and it
+						  will be redirected to the responsible authorities. The person can upload the
+						  pic using our web app or when it gets home on its personal computer.*</h3>
+					</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-12 container-mobile">
+			<div class="col-md-4 ">
+				<div class="text-center">
+					<h1>Anywhere</h1>
+					<h1>Desktop + Mobile</h1>
+
+				</div>
+		</div>
+
+			<div class="col-md-8 container-logo">
+				<div>
+					<%= image_tag("Untitled-1234.png", class: "img-responsive") %>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12 container-mobile">
+
+			<div class="col-md-8 container-logo">
+
+				<div class="col-md-12 ticket">
+
+      <div class="col-md-12 ticket-container">
+
+        <div class="col-md-12 ticket-title-container t-margin">
+          <div class="col-md-8 ticket-title">
+            <div class="ticket-title2 t-dark-blue"><%= @Ticket.title %></div>
+            <div class="t-soft-blue ticket-location"><%= @Ticket.location %></div>
+          </div>
+          <div class="col-md-1 pull-right ">
+            <% if @Ticket.status_id ==0 %>
+               <%= image_tag("staus-red.png", class: "img-responsive",style:"") %>
+            <%else %>
+              <%= image_tag("status-blue.png", class: "img-responsive",style:"") %>
+            <%end%>
+          </div>
+        </div>
+
+        <div  class="col-md-12 ticket-image">
+
+          <%= image_tag("tickets/#{@Ticket.picture}", class:"img-responsive") %>
+          <!--<a href="tickets/#{ticket.id}"><%= image_tag("tickets/#{@Ticket.picture}", class: "img-responsive") %></a>-->
+        </div>
+
+
+        <div class="col-md-12 ticket-info t-margin t-nomargin">
+          <div class="col-md-6 ticket-owner-image">
+            <div class="col-md-1 t-nomargin">
+
+
+              <%= image_tag("#{@Ticket.user.picture}", class: "img-circle img-responsive") %>
+              <!--<img src="img/default.png" alt="" class="img-circle img-responsive">-->
+            </div>
+            <div class="col-md-8 ticket-owner-name text-left t-dark-blue t-nomargin"><%= @Ticket.user.fname %> <%= @Ticket.user.lname %></div>
+          </div>
+          <div class="col-md-6 ticket-date text-right t-dark-blue"> <%= @Ticket.date%></div>
+        </div>
+
+
+        <div class="col-md-12 ticket-description">
+          <p><%=@Ticket.description%></p>
+        </div>
+
+
+        <div class="col-md-12 ticket-validations t-dark t-margin" data-valid="<%=@Ticket.id%>" data-validn="<%=@Ticket.votes.count%>")>
+          <%= @Ticket.votes.count %> validações
+        </div>
+      </div>
+
+
+			</div>
+			</div>
+
+
+
+		<div class="col-md-4 container-pad-top ">
+				<div class="text-center">
+					<h1>Simple UI</h1>
+				</div>
+			</div>
+		</div>
+
+
+
+
+			<div class="container5 col-md-12 container-team text-center">
+						<div>
+							<h1>Team:</h1>
+							<h4>Cristóvão Silva</h4>
+							<h4>Georgina Esteves</h4>
+						</div>
+
+						<div >
+							<h4>Márcio Fontes</h4>
+							<h4>Ricardo Castro</h4>
+							<h4>Tiago Miranda</h4>
+						</div>
+					</div>
 
 </div>
 
 
 <script>
-	
+
 	$("#login-reg").click(function(){
 		$(".login-form").addClass("hideit");
 		$(".register-form").removeClass("hideit");
@@ -181,8 +295,8 @@
 	});
 
 
-/*	
-	$( "#sign_up").click(function() { 
+/*
+	$( "#sign_up").click(function() {
 
 			var email = $("#inputEmail3").val();
 			var password = $("#inputPassword3").val();
@@ -198,7 +312,7 @@
 			});
 		});
 
-	$( "#login").click(function() { 
+	$( "#login").click(function() {
 
 		var email = $("#inputEmail").val();
 		var password = $("#inputPassword").val();
@@ -217,7 +331,7 @@
 
 */
 /*
-	$( "#logout").click(function() { 
+	$( "#logout").click(function() {
 
 
 		$.ajax({

@@ -25,7 +25,7 @@ body{
 .ticket-container{
 	border: 1px solid #e7e7e7;
 	background-color:white;
-	
+
 }
 
 .ticket-container{
@@ -87,7 +87,7 @@ body{
 .btn.btn-default.col-md-3.selected{
 	background-color:#125688;;
 	color:#fafafa;
-	
+
 }
 
 .ticket-title2,.ticket-location,.ts-title2,.ts-location,.ticket-image img,.icon-like-love-streamline{
@@ -120,4 +120,33 @@ body{
 
 .tss-container{
 	padding-top:5%;
+}
+
+.ticket-title-container{
+	padding-right: 0;
+}
+
+.ticket-space{
+	margin-top: 5%;
+}
+
+.item-hidden{
+	display:none;
+}
+
+.no-pad{
+	padding:0px;
+}
+
+.no-pad-left{
+	padding:0px;
+}
+
+.add-pad-top{
+	padding-top: 3%;
+}
+
+.vote-btn{
+	padding:10%;
+	cursor:pointer;
 }

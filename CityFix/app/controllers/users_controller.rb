@@ -9,7 +9,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 	def show
 
 		@user = User.find(params[:id])
-	
+
 	end
 
 	def new
@@ -35,12 +35,12 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
 	def profile
-	    
+
 	end
 
 	def settings
-		
-	    
+
+
 	end
 
 	def info
@@ -48,11 +48,11 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 	end
 
 	def image
-		
+
 	end
 
 	def password
-		
+
 	end
 
 
@@ -97,7 +97,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 	end
 
 	def perfil
-	    
+
 	end
 
 
@@ -162,5 +162,5 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     def user_update_image_params
       params.require(:user).permit(:picture)
     end
-	
+
 end

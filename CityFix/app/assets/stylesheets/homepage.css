@@ -17,11 +17,11 @@ quase preto: #4b4f54
 }
 
 .login-form{
-	
+
 }
 
 .container-logo{
-	
+
 }
 
 
@@ -41,4 +41,38 @@ quase preto: #4b4f54
 
 .login-btns, .register-btns{
 	margin-top: 3%;
+}
+
+.container-m{
+    margin-top: 5%;
+    padding-top:4%;
+    padding-bottom:4%;
+    margin-bottom: 5%
+}
+
+.container1.col-md-12.text-center.container-m{
+    margin-top: 10%;
+    padding-top:4%;
+    background-color:#125688;
+    color:#fafafa;
+}
+
+.col-md-12.container-mobile{
+    color: #125688;
+    background-color: #fafafa;
+    padding-top:4%;
+    padding-bottom:4%;
+}
+
+.container5.col-md-12.container-team{
+    margin-top: 5%;
+    padding-top:4%;
+    padding-bottom:4%;
+    background-color:#e6e6e6;
+    color:#4090db;
+    margin-bottom: 5%;
+}
+
+.container-pad-top{
+    padding-top:10%;
 }

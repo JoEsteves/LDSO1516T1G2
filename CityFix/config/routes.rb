@@ -6,6 +6,17 @@ Rails.application.routes.draw do
     get "/users/sign_in" => "tickets/recentes"
   end
 
+resources :votes do
+  resources :tickets
+    collection do
+      post 'createe'
+      delete 'destroy'
+      delete 'byebye'
+
+    end
+  end
+
+
   resources :users do
     resources :tickets
     collection do
