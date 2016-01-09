@@ -23,18 +23,18 @@
 				</div>
 
 				<div class="col-md 12 r-message">
-					
+
 				</div>
 			</div>
-			
+
 			<div class="col-md-12 r-form">
-				
+
 				<div class="col-md-3">
 					<div class="row img-container">
 
 						<%=image_tag("#{current_user.picture}", class: "img-responsive img-rounded") %>
 					</div>
-					
+
 					<div class="row text-center cncl-container">
 						<% if current_user.picture.file.nil? %>
 							<p class="help-block">Sem fotografia</p>
@@ -59,7 +59,7 @@
 							<%= f.file_field :picture %>
 						</p>
 
-						<button type="submit" name"commit" class="btn btn-default btn-sbmt">  
+						<button type="submit" name"commit" class="btn btn-default btn-sbmt">
 						    Carregar Imagem
 						</button>
 
@@ -70,7 +70,7 @@
 					    <input type="file" id="exampleInputFile">
 					</div>-->
 				</div>
-				
+
 			</div>
 
 		</div>

@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
 respond_to :js, :json, :html
+
+#new vote
 def new
     @vote = Vote.new
 end
 
-
+#creates a new vote - JSON
 def createe
     puts "vote = "
     puts votes_ticket
@@ -45,15 +47,6 @@ def createe
 
     end
 end
-
-
-  def byebye
-    @vote.destroy
-    respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
 
     def votes_params

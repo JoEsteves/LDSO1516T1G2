@@ -12,6 +12,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	end
 
+            #new user
 	def new
 		@user = User.new
 	end
@@ -19,6 +20,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 	def edit
 	end
 
+            #create user
 	def create
 		@user = User.new(user_params)
 
@@ -33,29 +35,35 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   		end
     end
 
-
+            #load profile
 	def profile
 
 	end
 
+
+            #load settings
 	def settings
 
 
 	end
 
+
+            #load info edit
 	def info
 
 	end
 
+            #load image edit
 	def image
 
 	end
 
+            #load password edit
 	def password
 
 	end
 
-
+            #update user information
 	def update_info
 		@user = current_user
 		if @user.update_attributes(user_update_info_params)
@@ -69,6 +77,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 		end
 	end
 
+
+            #update user image
 	def update_image
 		@user = current_user
 		if @user.update_attributes(user_update_image_params)
@@ -82,6 +92,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 		end
 	end
 
+            #delete user image
 	def delete_image
 		@user = current_user
 		@user.remove_picture!
@@ -96,11 +107,13 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 		end
 	end
 
+
+
 	def perfil
 
 	end
 
-
+            #logout action
 	def logout
 		session[:id] = nil
 		redirect_to '/welcome/index'
