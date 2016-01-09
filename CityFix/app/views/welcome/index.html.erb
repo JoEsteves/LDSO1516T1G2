@@ -189,57 +189,59 @@
 
 			<div class="col-md-8 container-logo">
 
-				<div class="col-md-12 ticket">
+			<% if !@ticket.nil? %>
+			<div class="col-md-12 ticket">
 
-      <div class="col-md-12 ticket-container">
+					  <div class="col-md-12 ticket-container">
 
-        <div class="col-md-12 ticket-title-container t-margin">
-          <div class="col-md-8 ticket-title">
-            <div class="ticket-title2 t-dark-blue"><%= @Ticket.title %></div>
-            <div class="t-soft-blue ticket-location"><%= @Ticket.location %></div>
-          </div>
-          <div class="col-md-1 pull-right ">
-            <% if @Ticket.status_id ==0 %>
-               <%= image_tag("staus-red.png", class: "img-responsive",style:"") %>
-            <%else %>
-              <%= image_tag("status-blue.png", class: "img-responsive",style:"") %>
-            <%end%>
-          </div>
-        </div>
+						<div class="col-md-12 ticket-title-container t-margin">
+						  <div class="col-md-8 ticket-title">
+							<div class="ticket-title2 t-dark-blue"><%= @Ticket.title %></div>
+							<div class="t-soft-blue ticket-location"><%= @Ticket.location %></div>
+						  </div>
+						  <div class="col-md-1 pull-right ">
+							<% if @Ticket.status_id ==0 %>
+							   <%= image_tag("staus-red.png", class: "img-responsive",style:"") %>
+							<%else %>
+							  <%= image_tag("status-blue.png", class: "img-responsive",style:"") %>
+							<%end%>
+						  </div>
+						</div>
 
-        <div  class="col-md-12 ticket-image">
+						<div  class="col-md-12 ticket-image">
 
-          <%= image_tag("tickets/#{@Ticket.picture}", class:"img-responsive") %>
-          <!--<a href="tickets/#{ticket.id}"><%= image_tag("tickets/#{@Ticket.picture}", class: "img-responsive") %></a>-->
-        </div>
-
-
-        <div class="col-md-12 ticket-info t-margin t-nomargin">
-          <div class="col-md-6 ticket-owner-image">
-            <div class="col-md-1 t-nomargin">
+						  <%= image_tag("tickets/#{@Ticket.picture}", class:"img-responsive") %>
+						  <!--<a href="tickets/#{ticket.id}"><%= image_tag("tickets/#{@Ticket.picture}", class: "img-responsive") %></a>-->
+						</div>
 
 
-              <%= image_tag("#{@Ticket.user.picture}", class: "img-circle img-responsive") %>
-              <!--<img src="img/default.png" alt="" class="img-circle img-responsive">-->
-            </div>
-            <div class="col-md-8 ticket-owner-name text-left t-dark-blue t-nomargin"><%= @Ticket.user.fname %> <%= @Ticket.user.lname %></div>
-          </div>
-          <div class="col-md-6 ticket-date text-right t-dark-blue"> <%= @Ticket.date%></div>
-        </div>
+						<div class="col-md-12 ticket-info t-margin t-nomargin">
+						  <div class="col-md-6 ticket-owner-image">
+							<div class="col-md-1 t-nomargin">
 
 
-        <div class="col-md-12 ticket-description">
-          <p><%=@Ticket.description%></p>
-        </div>
+							  <%= image_tag("#{@Ticket.user.picture}", class: "img-circle img-responsive") %>
+							  <!--<img src="img/default.png" alt="" class="img-circle img-responsive">-->
+							</div>
+							<div class="col-md-8 ticket-owner-name text-left t-dark-blue t-nomargin"><%= @Ticket.user.fname %> <%= @Ticket.user.lname %></div>
+						  </div>
+						  <div class="col-md-6 ticket-date text-right t-dark-blue"> <%= @Ticket.date%></div>
+						</div>
 
 
-        <div class="col-md-12 ticket-validations t-dark t-margin" data-valid="<%=@Ticket.id%>" data-validn="<%=@Ticket.votes.count%>")>
-          <%= @Ticket.votes.count %> validações
-        </div>
-      </div>
+						<div class="col-md-12 ticket-description">
+						  <p><%=@Ticket.description%></p>
+						</div>
+
+
+						<div class="col-md-12 ticket-validations t-dark t-margin" data-valid="<%=@Ticket.id%>" data-validn="<%=@Ticket.votes.count%>")>
+						  <%= @Ticket.votes.count %> validações
+						</div>
+					  </div>
 
 
 			</div>
+			<% end %>
 			</div>
 
 
